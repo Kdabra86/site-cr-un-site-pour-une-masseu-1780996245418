@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen au Bureau — Massage en Entreprise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--navy-mid:#132240;--gold:#c9a227;--gold-light:#e0c35a;--gold-pale:#f5e6b8;--white:#f8f6f0;--gray:#b0b8c8}
+body{font-family:'Inter',sans-serif;color:var(--white);background:var(--navy);line-height:1.7;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,162,39,.15)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold)}
+.logo span{color:var(--white);font-weight:400}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--gray);transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.burger{display:none;cursor:pointer;color:var(--gold);font-size:1.5rem}
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,rgba(10,22,40,.7),rgba(10,22,40,.85)),url('https://picsum.photos/seed/chairmassage1/1600/900') center/cover;position:relative}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:3.5rem;color:var(--gold);margin-bottom:20px}
+.hero p{font-size:1.15rem;color:var(--gray);margin-bottom:32px;max-width:500px}
+.btn{display:inline-block;padding:16px 36px;background:var(--gold);color:var(--navy);font-weight:700;font-size:.95rem;border-radius:6px;transition:background .3s,transform .2s}
+.btn:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:2px solid var(--gold);color:var(--gold);margin-left:16px}
+.btn-outline:hover{background:var(--gold);color:var(--navy)}
+section{padding:100px 0}
+.section-tag{font-size:.8rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:12px;font-weight:600}
+.section-title{font-size:2.8rem;margin-bottom:20px}
+.section-desc{color:var(--gray);max-width:600px;margin-bottom:48px;font-size:1.05rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.service-card{background:var(--navy-mid);border:1px solid rgba(201,162,39,.12);border-radius:12px;padding:40px 32px;transition:border-color .3s,transform .3s}
+.service-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.service-card i{font-size:2.2rem;color:var(--gold);margin-bottom:20px}
+.service-card h3{font-size:1.3rem;margin-bottom:12px;color:var(--white)}
+.service-card p{color:var(--gray);font-size:.95rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:12px;overflow:hidden;border:3px solid rgba(201,162,39,.2)}
+.about-text h3{font-size:1.6rem;color:var(--gold);margin:24px 0 12px}
+.about-text p{color:var(--gray);margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--gold)}
+.stat-label{font-size:.85rem;color:var(--gray);margin-top:4px}
+.benefits{background:var(--navy-mid)}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.benefit-item{display:flex;gap:20px;align-items:flex-start}
+.benefit-item i{color:var(--gold);font-size:1.4rem;margin-top:4px;flex-shrink:0}
+.benefit-item h3{font-size:1.15rem;margin-bottom:6px}
+.benefit-item p{color:var(--gray);font-size:.95rem}
+.testimonials{background:linear-gradient(180deg,var(--navy),var(--navy-mid))}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.testi-card{background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.1);border-radius:12px;padding:32px}
+.testi-card p{color:var(--gray);font-style:italic;margin-bottom:20px;font-size:.95rem}
+.testi-author{font-weight:600;color:var(--gold);font-size:.9rem}
+.testi-role{color:var(--gray);font-size:.8rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-info{display:flex;flex-direction:column;gap:28px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-item i{color:var(--gold);font-size:1.2rem;margin-top:4px;width:24px;text-align:center}
+.contact-item strong{display:block;color:var(--white);margin-bottom:2px}
+.contact-item span{color:var(--gray);font-size:.95rem}
+form{display:flex;flex-direction:column;gap:16px}
+form input,form textarea,form select{background:var(--navy-mid);border:1px solid rgba(201,162,39,.2);border-radius:8px;padding:14px 18px;color:var(--white);font-family:inherit;font-size:.95rem;outline:none;transition:border-color .3s}
+form input:focus,form textarea:focus,form select:focus{border-color:var(--gold)}
+form textarea{resize:vertical;min-height:120px}
+form select option{background:var(--navy-mid)}
+footer{background:var(--navy-mid);border-top:1px solid rgba(201,162,39,.1);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-col h4{color:var(--gold);margin-bottom:16px;font-size:1rem}
+.footer-col p,.footer-col a{display:block;color:var(--gray);font-size:.9rem;margin-bottom:8px}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(201,162,39,.1);padding-top:24px;text-align:center;color:var(--gray);font-size:.85rem}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(10,22,40,.98);padding:24px;flex-direction:column;gap:20px;z-index:99;border-bottom:1px solid rgba(201,162,39,.15)}
+.mobile-menu.open{display:flex}
+@media(max-width:1024px){.hero h1{font-size:2.6rem}.services-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none}.burger{display:block}.hero .container{grid-template-columns:1fr;text-align:center}.hero p{margin:0 auto 32px}.btn-outline{margin-left:0;margin-top:12px}.about-grid,.contact-grid,.benefits-grid{grid-template-columns:1fr}.section-title{font-size:2rem}.services-grid,.testi-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+</style>
+<style id="safety">*{opacity:1!important;transform:none!important;visibility:visible!important;animation-delay:0s!important;transition:none!important;}</style></head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#accueil" class="logo">Zen<span> au Bureau</span></a>
+    <ul class="nav-links">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="burger" id="burger"><i class="fas fa-bars"></i></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#accueil">Accueil</a>
+  <a href="#services">Services</a>
+  <a href="#apropos">À propos</a>
+  <a href="#temoignages">Témoignages</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section class="hero" id="accueil">
+  <div class="container">
+    <div>
+      <p class="section-tag">Bien-être en entreprise</p>
+      <h1>Le massage assis, un investissement dans votre capital humain</h1>
+      <p>Offrez à vos collaborateurs des pauses bien-être sur chaise de massage directement dans vos locaux. Réduction du stress, soulagement des tensions dorsales, amélioration de la concentration : des résultats mesurables dès la première séance.</p>
+      <a href="#contact" class="btn">Demander un devis gratuit</a>
+      <a href="#services" class="btn btn-outline">Découvrir nos services</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <p class="section-tag">Nos prestations</p>
+    <h2 class="section-title">Des solutions adaptées à chaque entreprise</h2>
+    <p class="section-desc">Que vous soyez une startup de 15 personnes ou un grand groupe de 500 salariés, nous concevons un programme sur mesure qui s'intègre naturellement dans votre organisation.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-chair"></i>
+        <h3>Massage assis sur chaise</h3>
+        <p>Séances de 15 à 20 minutes sur chaise ergonomique, habillés, sans huile. Le praticien cible les zones de tension : nuque, épaules, dos, bras. Idéal pour une pause déjeuner ou une coupure dans la journée de travail.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>Forfaits réguliers</h3>
+        <p>Interventions hebdomadaires, bimensuelles ou mensuelles selon vos besoins. Un planning tournant permet à chaque collaborateur de bénéficier de séances régulières tout au long de l'année, avec un suivi personnalisé.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-building"></i>
+        <h3>Journées bien-être</h3>
+        <p>Organisation de journées complètes dédiées à la santé au travail : massage assis, ateliers de posture, exercices d'étirement, conférences sur la gestion du stress. Parfait pour les séminaires ou semaines QVT.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-laptop-medical"></i>
+        <h3>Prévention des TMS</h3>
+        <p>Programme ciblé pour les équipes travaillant sur écran. Le massage assis prévient les troubles musculosquelettiques en libérant les tensions chroniques liées à la posture assise prolongée et aux mouvements répétitifs.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-users"></i>
+        <h3>Événements corporate</h3>
+        <p>Présence de nos praticiens lors de vos événements : salons professionnels, journées portes ouvertes, team building, gala de fin d'année. Un moment de détente qui marque les esprits et valorise votre image employeur.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-heart-pulse"></i>
+        <h3>Ateliers d'auto-massage</h3>
+        <p>Formation de vos équipes aux techniques d'auto-massage et d'étirement à réaliser au poste de travail. Chaque participant repart avec des gestes simples et efficaces pour gérer ses tensions au quotidien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="bienfaits">
+  <div class="container">
+    <p class="section-tag">Pourquoi choisir le massage en entreprise</p>
+    <h2 class="section-title">Des bénéfices concrets pour tous</h2>
+    <p class="section-desc">Le massage assis en entreprise n'est pas un luxe : c'est un outil de management moderne avec un retour sur investissement mesurable.</p>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <i class="fas fa-arrow-down"></i>
+        <div>
+          <h3>Réduction de l'absentéisme</h3>
+          <p>Les entreprises qui proposent du massage en entreprise observent une baisse moyenne de 25 % de l'absentéisme lié aux douleurs musculosquelettiques et au burn-out.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-brain"></i>
+        <div>
+          <h3>Amélioration de la concentration</h3>
+          <p>Après une séance de 15 minutes, les capacités d'attention et de focus augmentent significativement. Les collaborateurs retrouvent une clarté mentale durable.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-smile"></i>
+        <div>
+          <h3>Boost de la motivation</h3>
+          <p>Offrir du massage en entreprise envoie un signal fort : l'entreprise prend soin de ses équipes. Cela renforce l'engagement, la fidélité et le sentiment d'appartenance.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-handshake"></i>
+        <div>
+          <h3>Cohésion d'équipe renforcée</h3>
+          <p>Le partage d'un moment de bien-être crée du lien entre collègues, y compris entre services qui ne se croisent pas au quotidien. Un levier social puissant.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-shield-halved"></i>
+        <div>
+          <h3>Conformité QVT et QVCT</h3>
+          <p>Le massage assis s'inscrit dans la démarche de qualité de vie et des conditions de travail (QVCT) exigée par la loi. Un atout pour vos obligations sociales et votre marque employeur.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-bolt"></i>
+        <div>
+          <h3>Mise en œuvre immédiate</h3>
+          <p>Aucune infrastructure nécessaire : nous apportons nos chaises de massage, nous nous installons dans une salle de réunion ou un espace ouvert, et intervenons sans perturber votre activité.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apropos">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <img src="https://picsum.photos/seed/massagechair2/700/500" alt="Massage assis en entreprise" class="about-img">
+      </div>
+      <div class="about-text">
+        <p class="section-tag">Qui suis-je</p>
+        <h2 class="section-title">Sophie Marchand, praticienne en massage bien-être</h2>
+        <p>Diplômée de l'École Européenne de Massage et membre de la Fédération Française de Massage Bien-Être, je pratique le massage assis sur chaise depuis 2017. Spécialisée dans l'intervention en milieu professionnel, j'ai accompagné plus de 120 entreprises en Île-de-France.</p>
+        <h3>Une approche centrée sur le praticien</h3>
+        <p>Mon parcours m'a conduite à me former auprès de référents japonais en amma assis, une technique millénaire parfaitement adaptée au monde moderne. Chaque pression, chaque étirement est pensé pour libérer les tensions sans invasivité, dans le respect total du corps et de la pudeur de chacun.</p>
+        <h3>Engagement qualité</h3>
+        <p>Je suis la seule intervenante de ma structure, ce qui garantit la constance de la qualité, la connaissance approfondie de vos équipes et une relation de confiance durable avec votre entreprise. Chaque collaborateur est unique, chaque séance est personnalisée.</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div>
+        <div class="stat-num">120+</div>
+        <div class="stat-label">Entreprises accompagnées</div>
+      </div>
+      <div>
+        <div class="stat-num">8 500+</div>
+        <div class="stat-label">Séances réalisées</div>
+      </div>
+      <div>
+        <div class="stat-num">7 ans</div>
+        <div class="stat-label">D'expérience entreprise</div>
+      </div>
+      <div>
+        <div class="stat-num">98 %</div>
+        <div class="stat-label">Taux de satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="temoignages" class="testimonials">
+  <div class="container">
+    <p class="section-tag">Ils nous font confiance</p>
+    <h2 class="section-title">Ce que disent nos clients</h2>
+    <p class="section-desc">Retours d'expérience de responsables RH et de collaborateurs ayant bénéficié de nos interventions.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>« Depuis deux ans, Sophie intervient toutes les deux semaines dans nos locaux. Les retours sont unanimes : nos développeurs sont moins tendus, les maux de dos ont nettement diminué, et c'est devenu un rendez-vous attendu par tous. »</p>
+        <div class="testi-author">Marie Lemaire</div>
+        <div class="testi-role">DRH — TechSolutions, Paris</div>
+      </div>
+      <div class="testi-card">
+        <p>« J'étais sceptique sur l'efficacité d'une séance de 15 minutes. Après la première intervention, j'ai changé d'avis. Mes cervicales, bloquées depuis des mois, se sont dénouées. Je ne rate plus aucune session. »</p>
+        <div class="testi-author">Thomas Renaud</div>
+        <div class="testi-role">Chef de projet — Groupe Finance Plus</div>
+      </div>
+      <div class="testi-card">
+        <p>« Nous avons organisé une journée bien-être lors de notre séminaire annuel. Le massage sur chaise a été le clou de la journée. Les équipes en parlent encore six mois plus tard. Un investissement qui en vaut la peine. »</p>
+        <div class="testi-author">Claire Dubois</div>
+        <div class="testi-role">Responsable communication — Agence Créative Horizon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-tag">Parlons de votre projet</p>
+    <h2 class="section-title">Demandez votre devis personnalisé</h2>
+    <p class="section-desc">Décrivez-nous votre besoin et recevez une proposition adaptée à votre entreprise sous 24 heures.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Adresse</strong>
+            <span>42 rue de la Santé, 75014 Paris</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <strong>Téléphone</strong>
+            <span>01 86 95 42 37</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong>Email</strong>
+            <span>contact@zenaubureau.fr</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Horaires d'intervention</strong>
+            <span>Lundi au vendredi — 8h00 à 19h00</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <strong>Certifications</strong>
+            <span>Diplôme EFMB · Assurance RC Pro · Attestation de formation aux gestes et postures</span>
+          </div>
+        </div>
+      </div>
+      <form id="contactForm">
+        <input type="text" placeholder="Nom de l'entreprise" required>
+        <input type="text" placeholder="Votre nom et prénom" required>
+        <input type="email" placeholder="Email professionnel" required>
+        <input type="tel" placeholder="Téléphone">
+        <select required>
+          <option value="" disabled selected>Type de prestation souhaitée</option>
+          <option>Massage assis régulier</option>
+          <option>Journée bien-être ponctuelle</option>
+          <option>Événement corporate</option>
+          <option>Atelier d'auto-massage</option>
+          <option>Programme prévention TMS</option>
+          <option>Autre demande</option>
+        </select>
+        <input type="text" placeholder="Nombre de collaborateurs concernés">
+        <textarea placeholder="Décrivez votre besoin, vos contraintes horaires, la fréquence souhaitée..."></textarea>
+        <button type="submit" class="btn" style="text-align:center;border:none;cursor:pointer">Envoyer ma demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom:16px">Zen<span> au Bureau</span></div>
+        <p>Massage assis en entreprise à Paris et en Île-de-France. Sophrologue et praticienne certifiée, j'interviens dans vos locaux avec mon matériel pour offrir des pauses bien-être efficaces et professionnelles.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#bienfaits">Bienfaits</a>
+        <a href="#apropos">À propos</a>
+        <a href="#temoignages">Témoignages</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Coordonnées</h4>
+        <span>42 rue de la Santé</span>
+        <span>75014 Paris, France</span>
+        <span style="margin-top:12px">01 86 95 42 37</span>
+        <span>contact@zenaubureau.fr</span>
+        <span style="margin-top:12px">SIRET : 847 293 105 00014</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Zen au Bureau — Tous droits réservés | Massage bien-être, non médical | Créé avec soin à Paris</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('burger').addEventListener('click',function(){
+  var menu=document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+  this.querySelector('i').classList.toggle('fa-bars');
+  this.querySelector('i').classList.toggle('fa-times');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(link){
+  link.addEventListener('click',function(){
+    document.getElementById('mobileMenu').classList.remove('open');
+    var icon=document.getElementById('burger').querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+  });
+});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var target=document.querySelector(this.getAttribute('href'));
+    if(target){
+      var offset=target.offsetTop-72;
+      window.scrollTo({top:offset,behavior:'smooth'});
+    }
+  });
+});
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=this.querySelector('button[type="submit"]');
+  btn.textContent='Demande envoyée !';
+  btn.style.background='#2ecc71';
+  btn.style.color='#fff';
+  setTimeout(function(){
+    btn.textContent='Envoyer ma demande';
+    btn.style.background='';
+    btn.style.color='';
+    e.target.reset();
+  },3000);
+});
+</script>
+</body>
+</html>
